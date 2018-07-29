@@ -1,0 +1,14 @@
+import json
+
+with open('data_userpass.json') as json_data:
+   user_pass = json.load(json_data)
+
+
+
+import json
+with open("file.json", "wb") as f:
+   f.write(json.dumps(dict).encode("utf-8"))
+
+
+for k, v in d.items():
+    print(k, v)
