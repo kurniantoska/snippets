@@ -12,12 +12,9 @@ def create_email(username:str, passwd:str):
 
 	driver = webdriver.Chrome('D:\master\webdriver\chromedriver_win32\chromedriver.exe')
 	driver.get(url_create_email)
+	
 	print(driver.session_id)
-	# driver.find_element_by_xpath('//*[@title="Sign Up"]').click()
-	# time.sleep(2)
-	# driver.find_element_by_xpath('//*[@id="signup-plans"]/div[5]/div[1]/div[1]/div/div[3]/i[1]').click()
-	# time.sleep(2)
-	# driver.find_element_by_xpath('//*[@id="freePlan"]').click()
+
 	driver.find_element_by_id('username').send_keys(username)
 	time.sleep(2)
 	driver.find_element_by_id('password').send_keys(passwd)
@@ -36,11 +33,7 @@ for k, v in user_pass.items():
 	if loop_counter > 4:
 		break
 
+# use join to stop the thread		
 t.join()
 
-# for k,v in asyncio.as_completed(user_pass.items()):
-#     result = await k,v
-#     create_email(k, v)
-
-# username = [k for k,v in user_pass.items() ]
-# password = [v for k,v in user_pass.items() ]
+# source : https://www.simplifiedpython.net/python-threading-example/
