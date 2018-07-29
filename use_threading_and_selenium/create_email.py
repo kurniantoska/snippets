@@ -19,17 +19,24 @@ def create_email(username:str, passwd:str):
 	# time.sleep(2)
 	# driver.find_element_by_xpath('//*[@id="freePlan"]').click()
 	driver.find_element_by_id('username').send_keys(username)
+	time.sleep(2)
 	driver.find_element_by_id('password').send_keys(passwd)
+	time.sleep(2)
 	driver.find_element_by_id('passwordc').send_keys(passwd)
+	time.sleep(2)
+	driver.find_element_by_class_name('signUpProcess-btn-create').click()
 
 loop_counter = 0
 for k, v in user_pass.items():
+	# use Thread(target=functions, args=(argument for functions))
 	t = threading.Thread(target=create_email, args=(k,v))
 	t.start()
 	loop_counter += 1
 	print(loop_counter)
 	if loop_counter > 4:
 		break
+
+t.join()
 
 # for k,v in asyncio.as_completed(user_pass.items()):
 #     result = await k,v
